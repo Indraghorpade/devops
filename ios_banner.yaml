@@ -3,7 +3,6 @@ name: configure the login banner
   connection: network_cli
   gather_facts: no
 
-  tasks:
   ios_banner:
     banner: login
     text: |
@@ -11,15 +10,3 @@ name: configure the login banner
       that contains a multiline
       string
     state: present
-	
-	  - name: COLLECT OUTPUT OF SHOW COMMANDS
-      ios_command:
-        commands:
-          - show banner
-      tags: show
-      register: show_output
-
-    - name: DISPLAY THE COMMAND OUTPUT
-      debug:
-        var: show_output
-      tags: show
