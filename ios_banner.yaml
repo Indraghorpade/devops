@@ -1,12 +1,26 @@
-name: configure the login banner
+---
+-name: configure the login banner
   hosts: routers
   connection: network_cli
   gather_facts: no
 
+
   ios_banner:
     banner: login
-    text: |
+     text: |
       this is Indra login banner
       that contains a multiline
       string
-    state: present
+      state: present
+	
+- name: COLLECT OUTPUT OF SHOW COMMANDS
+   ios_command:
+      commands:
+          - show banner
+   tags: show
+   register: show_output
+
+- name: DISPLAY THE COMMAND OUTPUT
+    debug:
+        var: show_output
+      tags: show
