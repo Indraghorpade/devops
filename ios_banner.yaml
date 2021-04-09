@@ -1,11 +1,10 @@
 
 
-name: configure the login banner
+- name: configure the login banner
 
   hosts: routers
   connection: network_cli
   gather_facts: no
-
 
   ios_banner:
     banner: login
@@ -14,8 +13,8 @@ name: configure the login banner
       that contains a multiline
       string
     state: present
-	
-	  - name: COLLECT OUTPUT OF SHOW COMMANDS
+    
+  - name: COLLECT OUTPUT OF SHOW COMMANDS
       ios_command:
         commands:
           - show banner
